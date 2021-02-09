@@ -1,5 +1,15 @@
 # @keystonejs/fields-cloudinary-image
 
+## 2.1.4
+
+### Patch Changes
+
+- Updated dependencies [[`b97216a65`](https://github.com/keystonejs/keystone/commit/b97216a6526fffcca8232d86b115c28cb19587bf), [`a0931858e`](https://github.com/keystonejs/keystone/commit/a0931858e499d9504e4e822b850dcf89c3cdac60), [`45b047ad0`](https://github.com/keystonejs/keystone/commit/45b047ad015fc9d72cf8c2b85529ffe3abbc189e)]:
+  - @keystonejs/fields@22.0.0
+  - @keystonejs/adapter-mongoose@11.0.1
+  - @keystonejs/adapter-knex@13.0.1
+  - @keystonejs/fields-content@9.0.6
+
 ## 2.1.3
 
 ### Patch Changes

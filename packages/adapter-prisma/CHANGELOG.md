@@ -1,5 +1,15 @@
 # @keystonejs/adapter-prisma
 
+## 3.0.1
+
+### Patch Changes
+
+- [`d8f64887f`](https://github.com/keystonejs/keystone/commit/d8f64887f2aa428ea8ac35d0efa50ce05534f40b) [#4795](https://github.com/keystonejs/keystone/pull/4795) Thanks [@renovate](https://github.com/apps/renovate)! - Updated to `prisma` `2.16.1`.
+
+- Updated dependencies []:
+  - @keystonejs/fields-auto-increment@8.1.4
+  - @keystonejs/keystone@19.1.1
+
 ## 3.0.0
 
 ### Major Changes

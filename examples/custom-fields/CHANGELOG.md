@@ -1,5 +1,19 @@
 # @keystonejs/demo-custom-fields
 
+## 2.0.0
+
+### Major Changes
+
+- [`b97216a65`](https://github.com/keystonejs/keystone/commit/b97216a6526fffcca8232d86b115c28cb19587bf) [#4622](https://github.com/keystonejs/keystone/pull/4622) Thanks [@renovate](https://github.com/apps/renovate)! - Updated react and react-dom to v17
+
+### Patch Changes
+
+- Updated dependencies [[`b97216a65`](https://github.com/keystonejs/keystone/commit/b97216a6526fffcca8232d86b115c28cb19587bf), [`a0931858e`](https://github.com/keystonejs/keystone/commit/a0931858e499d9504e4e822b850dcf89c3cdac60)]:
+  - @keystonejs/fields@22.0.0
+  - @keystonejs/adapter-mongoose@11.0.1
+  - @keystonejs/app-admin-ui@7.3.14
+  - @keystonejs/keystone@19.1.1
+
 ## 1.1.1
 
 ### Patch Changes

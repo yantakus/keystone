@@ -1,5 +1,16 @@
 # @keystonejs/api-tests
 
+## 8.1.1
+
+### Patch Changes
+
+- Updated dependencies [[`b97216a65`](https://github.com/keystonejs/keystone/commit/b97216a6526fffcca8232d86b115c28cb19587bf)]:
+  - @keystonejs/fields@22.0.0
+  - @keystonejs/test-utils@11.1.4
+  - @keystonejs/auth-password@6.0.1
+  - @keystonejs/fields-authed-relationship@1.0.17
+  - @keystonejs/list-plugins@7.1.6
+
 ## 8.1.0
 
 ### Minor Changes

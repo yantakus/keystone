@@ -1,5 +1,15 @@
 # @keystonejs/example-projects-todo
 
+## 5.0.25
+
+### Patch Changes
+
+- Updated dependencies [[`b97216a65`](https://github.com/keystonejs/keystone/commit/b97216a6526fffcca8232d86b115c28cb19587bf), [`a0931858e`](https://github.com/keystonejs/keystone/commit/a0931858e499d9504e4e822b850dcf89c3cdac60)]:
+  - @keystonejs/fields@22.0.0
+  - @keystonejs/adapter-mongoose@11.0.1
+  - @keystonejs/app-admin-ui@7.3.14
+  - @keystonejs/keystone@19.1.1
+
 ## 5.0.24
 
 ### Patch Changes

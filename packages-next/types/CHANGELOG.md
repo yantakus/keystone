@@ -1,5 +1,15 @@
 # @keystone-next/types
 
+## 12.0.2
+
+### Patch Changes
+
+- [`208722a42`](https://github.com/keystonejs/keystone/commit/208722a4234434e116846756bab18f7e11674ec8) [#4784](https://github.com/keystonejs/keystone/pull/4784) Thanks [@timleslie](https://github.com/timleslie)! - Reordered type definitions for consistency with docs. Remove unused type `ListAdminUIConfig.path`.
+
+* [`ad75e3d61`](https://github.com/keystonejs/keystone/commit/ad75e3d61c73ba1239fd21b58f175aac01d9f302) [#4798](https://github.com/keystonejs/keystone/pull/4798) Thanks [@timleslie](https://github.com/timleslie)! - Removed unused type `config.ui.path`.
+
+- [`954350389`](https://github.com/keystonejs/keystone/commit/9543503894c3e78a9b69a75cbfb3ca6b85ae34e8) [#4778](https://github.com/keystonejs/keystone/pull/4778) Thanks [@timleslie](https://github.com/timleslie)! - Removed the unused `plural`, `singular`, `label`, `db`, and `graphql.cacheHint` list config options.
+
 ## 12.0.1
 
 ### Patch Changes

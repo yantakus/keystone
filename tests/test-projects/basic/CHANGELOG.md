@@ -1,5 +1,22 @@
 # @keystonejs/cypress-project-basic
 
+## 7.0.2
+
+### Patch Changes
+
+- Updated dependencies [[`b97216a65`](https://github.com/keystonejs/keystone/commit/b97216a6526fffcca8232d86b115c28cb19587bf), [`d8f64887f`](https://github.com/keystonejs/keystone/commit/d8f64887f2aa428ea8ac35d0efa50ce05534f40b)]:
+  - @keystonejs/fields@22.0.0
+  - @keystonejs/adapter-prisma@3.0.1
+  - @keystonejs/app-admin-ui@7.3.14
+  - @keystonejs/fields-cloudinary-image@2.1.4
+  - @keystonejs/fields-color@1.0.10
+  - @keystonejs/fields-content@9.0.6
+  - @keystonejs/fields-markdown@5.2.14
+  - @keystonejs/fields-oembed@3.1.4
+  - @keystonejs/fields-unsplash@3.1.4
+  - @keystonejs/fields-wysiwyg-tinymce@5.3.16
+  - @keystonejs/keystone@19.1.1
+
 ## 7.0.1
 
 ### Patch Changes

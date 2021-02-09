@@ -1,5 +1,13 @@
 # @keystonejs/keystone
 
+## 19.1.1
+
+### Patch Changes
+
+- Updated dependencies [[`28a61dc67`](https://github.com/keystonejs/keystone/commit/28a61dc67b990ebd16bfc4e1c0a1e9ffb0e54d81), [`92727414a`](https://github.com/keystonejs/keystone/commit/92727414af4e6efcb8d691f8197c6165ae469577)]:
+  - @keystonejs/access-control@7.0.0
+  - @keystonejs/app-version@2.0.0
+
 ## 19.1.0
 
 ### Minor Changes

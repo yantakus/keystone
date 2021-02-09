@@ -1,5 +1,17 @@
 # @keystonejs/cypress-project-facebook-login
 
+## 6.0.2
+
+### Patch Changes
+
+- Updated dependencies [[`b97216a65`](https://github.com/keystonejs/keystone/commit/b97216a6526fffcca8232d86b115c28cb19587bf), [`d8f64887f`](https://github.com/keystonejs/keystone/commit/d8f64887f2aa428ea8ac35d0efa50ce05534f40b)]:
+  - @keystonejs/fields@22.0.0
+  - @keystonejs/adapter-prisma@3.0.1
+  - @keystonejs/app-admin-ui@7.3.14
+  - @keystonejs/auth-passport@5.2.13
+  - @keystonejs/auth-password@6.0.1
+  - @keystonejs/keystone@19.1.1
+
 ## 6.0.1
 
 ### Patch Changes

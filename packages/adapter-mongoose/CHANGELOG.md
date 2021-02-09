@@ -1,5 +1,15 @@
 # @keystonejs/adapter-mongoose
 
+## 11.0.1
+
+### Patch Changes
+
+- [`a0931858e`](https://github.com/keystonejs/keystone/commit/a0931858e499d9504e4e822b850dcf89c3cdac60) [#4768](https://github.com/keystonejs/keystone/pull/4768) Thanks [@kschingiz](https://github.com/kschingiz)! - Created indexes for relation adjacency collection fields
+
+- Updated dependencies []:
+  - @keystonejs/fields-mongoid@9.1.4
+  - @keystonejs/keystone@19.1.1
+
 ## 11.0.0
 
 ### Major Changes
