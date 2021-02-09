@@ -2,6 +2,23 @@ import { Markdown } from '../../components/Page';
 
 # Fields API
 
-(coming soon)
+```typescript
+import {
+  // Scalar types
+  checkbox,
+  integer,
+  password,
+  select,
+  text,
+  timestamp,
+  // Relationship type
+  relationship,
+  // Index types
+  autoincrement,
+  mongoId,
+  // Virtual type
+  virtual,
+} from '@keystone-next/fields';
+```
 
 export default ({ children }) => <Markdown>{children}</Markdown>;
