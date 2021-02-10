@@ -12,16 +12,7 @@ type RelationshipsConfig = Record<
     listKey: string;
     /** GraphQL fields to select when querying the field */
     selection?: string;
-  } & (
-    | {
-        kind: 'inline';
-        label: string;
-      }
-    | {
-        kind: 'prop';
-        many?: true;
-      }
-  )
+  } & ({ kind: 'inline'; label: string } | { kind: 'prop'; many?: true })
 >;
 
 type FormattingConfig = {
@@ -37,25 +28,10 @@ type FormattingConfig = {
         subscript?: true;
         keyboard?: true;
       };
-  listTypes?:
-    | true
-    | {
-        ordered?: true;
-        unordered?: true;
-      };
-  alignment?:
-    | true
-    | {
-        center?: true;
-        end?: true;
-      };
+  listTypes?: true | { ordered?: true; unordered?: true };
+  alignment?: true | { center?: true; end?: true };
   headingLevels?: true | readonly (1 | 2 | 3 | 4 | 5 | 6)[];
-  blockTypes?:
-    | true
-    | {
-        blockquote?: true;
-        code?: true;
-      };
+  blockTypes?: true | { blockquote?: true; code?: true };
   softBreaks?: true;
 };
 
@@ -108,14 +84,8 @@ export const document = <TGeneratedListTypes extends BaseGeneratedListTypes>(
     formatting: {
       alignment:
         formatting.alignment === true
-          ? {
-              center: true,
-              end: true,
-            }
-          : {
-              center: !!formatting.alignment?.center,
-              end: !!formatting.alignment?.end,
-            },
+          ? { center: true, end: true }
+          : { center: !!formatting.alignment?.center, end: !!formatting.alignment?.end },
       blockTypes:
         formatting?.blockTypes === true
           ? { blockquote: true, code: true }

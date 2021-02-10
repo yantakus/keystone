@@ -2,7 +2,13 @@ import { Markdown } from '../../components/Page';
 
 # Fields API
 
+The `fields` option of a [list configuration](./schema) defines the names, types, and configuration of the fields in the list.
+This configuration option takes an object with field names as keys, and configured field types as values.
+
+This document covers the different field types which are available and the configuration options they accept.
+
 ```typescript
+import { config, createSchema, list } from '@keystone-next/keystone/schema';
 import {
   // Scalar types
   checkbox,
@@ -19,6 +25,133 @@ import {
   // Virtual type
   virtual,
 } from '@keystone-next/fields';
+
+// Complex types
+import { document } from '@keystone-next/fields-document';
+import { cloudinary } from '@keystone-next/cloudinary';
+
+export default config({
+  lists: createSchema({
+    ListName: list({
+      fields: {
+        fieldName: text({ ... }),
+        ...
+      },
+    }),
+    ...
+  }),
+  ...
+});
 ```
+
+## Common configuration
+
+All field types accept a common set of configuration options.
+All options are optional.
+
+Options:
+
+- `access`: Defines the [Access Control](../guides/access-control) rules for the field.
+  See the [Access Control API](./access-control) for full details on the available access control options.
+- `hooks`: The `hooks` option defines [hook](../guides/hooks) functions for the field.
+  Hooks allow you to execute code at different stages of the mutation lifecycle.
+  See the [Hooks API](./hooks) for full details on the available hook options.
+- `label`: The label displayed for this field in the Admin UI. Defaults to a human readable version of the field name.
+- `ui`: Controls how the field is displayed in the Admin UI.
+  - `views`:
+  - `description`: (coming soon)
+  - `createView`: (coming soon)
+  - `listView`: (coming soon)
+  - `itemView`: (coming soon)
+
+```typescript
+export default config({
+  lists: createSchema({
+    ListName: list({
+      fields: {
+        fieldName: text({
+          access: { ... },
+          hooks: { ... },
+          label: '...',
+          ui: {
+            views: '...',
+            description: '...',
+            createView: {
+              fieldMode: ({ session }) => 'edit',
+            },
+            listView: {
+              fieldMode: ({ session }) => 'read',
+            },
+            itemView: {
+              fieldMode: ({ session, item }) => 'read',
+            },
+          },
+        }),
+        ...
+      },
+    }),
+    ...
+  }),
+  ...
+});
+```
+
+## Scalar types
+
+### `checkbox`
+
+(coming soon)
+
+### `integer`
+
+(coming soon)
+
+### `password`
+
+(coming soon)
+
+### `select`
+
+(coming soon)
+
+### `text`
+
+(coming soon)
+
+### `timestamp`
+
+(coming soon)
+
+## Relationship type
+
+### `relationship`
+
+(coming soon)
+
+## Index types
+
+### `autoincrement`
+
+(coming soon)
+
+### `mongoId`
+
+(coming soon)
+
+## Virtual type
+
+### `virtual`
+
+(coming soon)
+
+## Complex types
+
+### `document`
+
+(coming soon)
+
+### `cloudinary`
+
+(coming soon)
 
 export default ({ children }) => <Markdown>{children}</Markdown>;
