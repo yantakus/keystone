@@ -64,7 +64,8 @@ function TextAlignDialog({
   alignment: DocumentFeatures['formatting']['alignment'];
   onClose: () => void;
 }) {
-  const {    alignment: { selected },
+  const {
+    alignment: { selected },
     editor,
   } = useToolbarState();
   const alignments = [
