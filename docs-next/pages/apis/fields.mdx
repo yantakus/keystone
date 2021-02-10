@@ -137,7 +137,7 @@ export default config({
 
 ### `integer`
 
-(coming soon)
+An `integer` field represents an integer value.
 
 Options:
 
@@ -145,7 +145,7 @@ Options:
   This value will be used for the field when creating items if no explicit value is set.
   `context` is a [`KeystoneContext`](./context) object.
   `originalItem` is an object containing the data passed in to the `create` mutation.
-- `isRequired` (default: `false`):
+- `isRequired` (default: `false`): If `true` then this field can never be set to `null`.
 - `isIndexed` (`knex` and `mongoose` adapters only. Default: `false`): If `true` a database level index will be applied to this field, which can make searching faster.
 - `isUnique` (default: `false`): If `true` then all values of this field must be unique.
 
@@ -174,7 +174,7 @@ export default config({
 
 ### `password`
 
-(coming soon)
+A `password` field represents an encrypted password value.
 
 Options:
 
@@ -213,7 +213,7 @@ Options:
 - `dataType` (default: `'string'`): Must be on
 - `options`
 - `defaultValue`
-- `isRequired` (default: `false`):
+- `isRequired` (default: `false`): If `true` then this field can never be set to `null`.
 - `isIndexed` (`knex` and `mongoose` adapters only. Default: `false`): If `true` a database level index will be applied to this field, which can make searching faster.
 - `isUnique` (default: `false`): If `true` then all values of this field must be unique.
 - `ui`
@@ -249,7 +249,7 @@ export default config({
 
 ### `text`
 
-(coming soon)
+A `text` field represents an string value.
 
 Options:
 
@@ -257,7 +257,7 @@ Options:
   This value will be used for the field when creating items if no explicit value is set.
   `context` is a [`KeystoneContext`](./context) object.
   `originalItem` is an object containing the data passed in to the `create` mutation.
-- `isRequired` (default: `false`):
+- `isRequired` (default: `false`): If `true` then this field can never be set to `null`.
 - `isIndexed` (`knex` and `mongoose` adapters only. Default: `false`): If `true` a database level index will be applied to this field, which can make searching faster.
 - `isUnique` (default: `false`): If `true` then all values of this field must be unique.
 - `ui`
@@ -293,7 +293,7 @@ export default config({
 Options:
 
 - `defaultValue`
-- `isRequired` (default: `false`):
+- `isRequired` (default: `false`): If `true` then this field can never be set to `null`.
 - `isIndexed` (`knex` and `mongoose` adapters only. Default: `false`): If `true` a database level index will be applied to this field, which can make searching faster.
 - `isUnique` (default: `false`): If `true` then all values of this field must be unique.
 
@@ -484,7 +484,7 @@ export default config({
 
 (coming soon)
 
-- `isRequired` (default: `false`):
+- `isRequired` (default: `false`): If `true` then this field can never be set to `null`.
 - `cloudinary`: Configuration for the connected Cloudinary account.
   - `cloudName`
   - `apiKey`

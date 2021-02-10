@@ -18,7 +18,7 @@ export type SelectFieldConfig<
     ui?: { displayMode?: 'select' | 'segmented-control' };
     isRequired?: boolean;
     isIndexed?: boolean;
-    isUnique?: boolean;  // This is a really weird thing to support -TL
+    isUnique?: boolean; // This is a really weird thing to support -TL
   };
 
 export const select = <TGeneratedListTypes extends BaseGeneratedListTypes>(
