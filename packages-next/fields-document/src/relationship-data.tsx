@@ -20,34 +20,40 @@ export function addRelationshipData(
     const relationship = relationships[relationshipKey];
     if (!relationship) return data;
     if (relationship.kind === 'prop' && relationship.many) {
-      const ids = Array.isArray(data) ? data.filter(item => item.id != null).map(x => x.id) : [];
+      const ids = (Array.isArray(data) ? data : []).filter(item => item.id !== null).map(x => x.id);
 
       if (ids.length) {
         const labelField = getLabelFieldsForLists(graphQLAPI.schema)[relationship.listKey];
-        let val = await graphQLAPI.run({
-          query: `query($ids: [ID!]!) {items:${
-            gqlNames(relationship.listKey).listQueryName
-          }(where: {id_in:$ids}) {${idFieldAlias}:id ${labelFieldAlias}:${labelField}\n${
-            relationship.selection || ''
-          }}}`,
+        const val = await graphQLAPI.run({
+          query: `query($ids: [ID!]!) {
+            items:${gqlNames(relationship.listKey).listQueryName}(where: { id_in: $ids }) {
+              ${idFieldAlias}: id
+              ${labelFieldAlias}: ${labelField}
+              ${relationship.selection || ''}
+            }
+          }`,
           variables: { ids },
         });
 
-        return Array.isArray(val.items)
-          ? val.items.map(({ [labelFieldAlias]: label, [idFieldAlias]: id, ...data }) => {
-              return { id, label, data };
-            })
-          : [];
+        const _items = Array.isArray(val.items) ? val.items : [];
+        return _items.map(({ [labelFieldAlias]: label, [idFieldAlias]: id, ...data }) => ({
+          id,
+          label,
+          data,
+        }));
       }
       return [];
     } else {
       const id = data?.id;
-      if (id != null) {
+      if (id !== null) {
         const labelField = getLabelFieldsForLists(graphQLAPI.schema)[relationship.listKey];
-        let val = await graphQLAPI.run({
-          query: `query($id: ID!) {item:${
-            relationship.listKey
-          }(where: {id:$id}) {${labelFieldAlias}:${labelField}\n${relationship.selection || ''}}}`,
+        const val = await graphQLAPI.run({
+          query: `query($id: ID!) {
+            item:${relationship.listKey}(where: { id: $id }) {
+              ${labelFieldAlias}: ${labelField}
+              ${relationship.selection || ''}
+            }
+          }`,
           variables: { id },
         });
 
@@ -68,12 +74,12 @@ export function addRelationshipData(
       }
     }
   };
+
   return Promise.all(
     nodes.map(async node => {
       if (node.type === 'relationship') {
         return { ...node, data: await fetchData(node.relationship as string, node.data) };
-      }
-      if (node.type === 'component-block') {
+      } else if (node.type === 'component-block') {
         const componentBlock = componentBlocks[node.component as string];
         if (componentBlock) {
           const [props, children] = await Promise.all([
@@ -90,14 +96,9 @@ export function addRelationshipData(
               gqlNames
             ),
           ]);
-          return {
-            ...node,
-            props,
-            children,
-          };
+          return { ...node, props, children };
         }
-      }
-      if (Array.isArray(node.children)) {
+      } else if (Array.isArray(node.children)) {
         return {
           ...node,
           children: await addRelationshipData(
