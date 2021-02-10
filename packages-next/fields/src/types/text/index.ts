@@ -10,9 +10,7 @@ export type TextFieldConfig<
   isRequired?: boolean;
   isUnique?: boolean;
   isIndexed?: boolean;
-  ui?: {
-    displayMode?: 'input' | 'textarea';
-  };
+  ui?: { displayMode?: 'input' | 'textarea' };
 };
 
 export const text = <TGeneratedListTypes extends BaseGeneratedListTypes>(

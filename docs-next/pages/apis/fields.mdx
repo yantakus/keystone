@@ -124,8 +124,8 @@ export default config({
       fields: {
         fieldName: checkbox({
           defaultValue: true,
-          isRequired: true
-         }),
+          isRequired: true,
+        }),
         ...
       },
     }),
@@ -162,7 +162,7 @@ export default config({
           isRequired: true,
           isIndexed: true,
           isUnique: true,
-         }),
+        }),
         ...
       },
     }),
@@ -194,8 +194,8 @@ export default config({
         fieldName: password({
           isRequired: true,
           minLength: 10,
-          bcrypt: require('bcrypt')
-         }),
+          bcrypt: require('bcrypt'),
+        }),
         ...
       },
     }),
@@ -217,7 +217,8 @@ Options:
 - `isRequired` (default: `false`): If `true` then this field can never be set to `null`.
 - `isIndexed` (`knex` and `mongoose` adapters only. Default: `false`): If `true` a database level index will be applied to this field, which can make searching faster.
 - `isUnique` (default: `false`): If `true` then all values of this field must be unique.
-- `ui`
+- `ui` (default: `{ displayMode: 'select' }`): Configures the display mode of the field in the Admin UI.
+  Can be one of `['select', 'segmented-control']`.
 
 ```typescript
 import { config, createSchema, list } from '@keystone-next/keystone/schema';
@@ -238,7 +239,7 @@ export default config({
           isIndexed: true,
           isUnique: true,
           ui: { displayMode: 'select' },
-         }),
+        }),
         ...
       },
     }),
@@ -250,7 +251,7 @@ export default config({
 
 ### `text`
 
-A `text` field represents an string value.
+A `text` field represents a string value.
 
 Options:
 
@@ -261,7 +262,8 @@ Options:
 - `isRequired` (default: `false`): If `true` then this field can never be set to `null`.
 - `isIndexed` (`knex` and `mongoose` adapters only. Default: `false`): If `true` a database level index will be applied to this field, which can make searching faster.
 - `isUnique` (default: `false`): If `true` then all values of this field must be unique.
-- `ui`
+- `ui` (default: `{ displayMode: 'input' }`): Configures the display mode of the field in the Admin UI.
+  Can be one of `['input', 'textarea']`.
 
 ```typescript
 import { config, createSchema, list } from '@keystone-next/keystone/schema';
@@ -276,8 +278,8 @@ export default config({
           isRequired: true,
           isIndexed: true,
           isUnique: true,
-          ui: { displayMode: 'input' },
-         }),
+          ui: { displayMode: 'textarea' },
+        }),
         ...
       },
     }),
@@ -289,11 +291,15 @@ export default config({
 
 ### `timestamp`
 
-(coming soon)
+A `timestamp` field represents a time value.
 
 Options:
 
-- `defaultValue`
+- `defaultValue` (default: `undefined`): Can be either a string value or an async function which takes an argument `({ context, originalItem })` and returns a string value.
+  The string value must be an ISO8601 formatted timestamp string, e.g. `'1970-01-01T00:00:00.000Z'`.
+  This value will be used for the field when creating items if no explicit value is set.
+  `context` is a [`KeystoneContext`](./context) object.
+  `originalItem` is an object containing the data passed in to the `create` mutation.
 - `isRequired` (default: `false`): If `true` then this field can never be set to `null`.
 - `isIndexed` (`knex` and `mongoose` adapters only. Default: `false`): If `true` a database level index will be applied to this field, which can make searching faster.
 - `isUnique` (default: `false`): If `true` then all values of this field must be unique.
@@ -307,11 +313,11 @@ export default config({
     ListName: list({
       fields: {
         fieldName: timestamp({
-          defaultValue: '...',
+          defaultValue: '1970-01-01T00:00:00.000Z',
           isRequired: true,
           isIndexed: true,
           isUnique: true,
-         }),
+        }),
         ...
       },
     }),
@@ -326,6 +332,31 @@ export default config({
 ### `relationship`
 
 (coming soon)
+
+```typescript
+import { config, createSchema, list } from '@keystone-next/keystone/schema';
+import { relationship } from '@keystone-next/fields';
+
+export default config({
+  lists: createSchema({
+    ListName: list({
+      fields: {
+        fieldName: relationship({
+          ref: '...',
+          many: false,
+          ui: { ... }.
+          defaultValue: '...',
+          isIndexed: '...',
+          isUnique: '...',
+        }),
+        ...
+      },
+    }),
+    ...
+  }),
+  ...
+});
+```
 
 ## Index types
 
@@ -353,7 +384,7 @@ export default config({
           isRequired: true,
           isIndexed: true,
           isUnique: true,
-         }),
+        }),
         ...
       },
     }),
@@ -387,7 +418,7 @@ export default config({
           isRequired: true,
           isIndexed: true,
           isUnique: true,
-         }),
+        }),
         ...
       },
     }),
@@ -428,7 +459,7 @@ export default config({
             { name: '...', type: '...' },
             ...
           ]
-         }),
+        }),
         ...
       },
     }),
@@ -471,7 +502,7 @@ export default config({
           links: true,
           dividers: true,
           layouts: [...],
-         }),
+        }),
         ...
       },
     }),
@@ -507,8 +538,8 @@ export default config({
             apiKey: process.env.CLOUDINARY_API_KEY;
             apiSecret: process.env.CLOUDINARY_API_SECRET,
             folder: process.env.CLOUDINARY_API_FOLDER,
-          }
-         }),
+          },
+        }),
         ...
       },
     }),
