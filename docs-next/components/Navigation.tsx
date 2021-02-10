@@ -61,6 +61,7 @@ export const Navigation = () => {
         <NavItem href="/guides/hooks">Hooks</NavItem>
         <NavItem href="/guides/schema-extension">Schema Extension</NavItem>
         <NavItem href="/guides/content">Content Fields</NavItem>
+        <NavItem href="/guides/virtual">Virtual Fields</NavItem>
       </Section>
       <Section label="API">
         <NavItem href="/apis/config">Config API</NavItem>
