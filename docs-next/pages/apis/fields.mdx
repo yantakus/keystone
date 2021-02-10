@@ -6,6 +6,7 @@ The `fields` option of a [list configuration](./schema) defines the names, types
 This configuration option takes an object with field names as keys, and configured field types as values.
 
 This document covers the different field types which are available and the configuration options they accept.
+To see how to access fields in the GraphQL API please see the [GraphQL API](./graphql) docs.
 
 ```typescript
 import { config, createSchema, list } from '@keystone-next/keystone/schema';
@@ -102,25 +103,167 @@ export default config({
 
 (coming soon)
 
+```typescript
+import { config, createSchema, list } from '@keystone-next/keystone/schema';
+import { checkbox } from '@keystone-next/fields';
+
+export default config({
+  lists: createSchema({
+    ListName: list({
+      fields: {
+        fieldName: checkbox({
+          defaultValue: true,
+          isRequired: true
+         }),
+        ...
+      },
+    }),
+    ...
+  }),
+  ...
+});
+```
+
 ### `integer`
 
 (coming soon)
+
+```typescript
+import { config, createSchema, list } from '@keystone-next/keystone/schema';
+import { integer } from '@keystone-next/fields';
+
+export default config({
+  lists: createSchema({
+    ListName: list({
+      fields: {
+        fieldName: integer({
+          defaultValue: 0,
+          isRequired: true,
+          isIndexed: true,
+          isUnique: true,
+         }),
+        ...
+      },
+    }),
+    ...
+  }),
+  ...
+});
+```
 
 ### `password`
 
 (coming soon)
 
+```typescript
+import { config, createSchema, list } from '@keystone-next/keystone/schema';
+import { password } from '@keystone-next/fields';
+
+export default config({
+  lists: createSchema({
+    ListName: list({
+      fields: {
+        fieldName: password({
+          isRequired: true,
+          minLength: 10,
+          bcrypt: 'compare,
+         }),
+        ...
+      },
+    }),
+    ...
+  }),
+  ...
+});
+```
+
 ### `select`
 
 (coming soon)
+
+```typescript
+import { config, createSchema, list } from '@keystone-next/keystone/schema';
+import { select } from '@keystone-next/fields';
+
+export default config({
+  lists: createSchema({
+    ListName: list({
+      fields: {
+        fieldName: select({
+          dataType: 'enum',
+          options: [
+            { label: '...', value: '...' },
+            ...
+          ],
+          defaultValue: '...',
+          isRequired: true,
+          isIndexed: true,
+          isUnique: true,
+          ui: { displayMode: 'select' },
+         }),
+        ...
+      },
+    }),
+    ...
+  }),
+  ...
+});
+```
 
 ### `text`
 
 (coming soon)
 
+```typescript
+import { config, createSchema, list } from '@keystone-next/keystone/schema';
+import { text } from '@keystone-next/fields';
+
+export default config({
+  lists: createSchema({
+    ListName: list({
+      fields: {
+        fieldName: text({
+          defaultValue: '...',
+          isRequired: true,
+          isIndexed: true,
+          isUnique: true,
+          ui: { displayMode: 'input' },
+         }),
+        ...
+      },
+    }),
+    ...
+  }),
+  ...
+});
+```
+
 ### `timestamp`
 
 (coming soon)
+
+```typescript
+import { config, createSchema, list } from '@keystone-next/keystone/schema';
+import { timestamp } from '@keystone-next/fields';
+
+export default config({
+  lists: createSchema({
+    ListName: list({
+      fields: {
+        fieldName: timestamp({
+          defaultValue: '...',
+          isRequired: true,
+          isIndexed: true,
+          isUnique: true,
+         }),
+        ...
+      },
+    }),
+    ...
+  }),
+  ...
+});
+```
 
 ## Relationship type
 
