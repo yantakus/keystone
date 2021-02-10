@@ -18,11 +18,14 @@ import {
   select,
   text,
   timestamp,
+
   // Relationship type
   relationship,
+
   // Index types
   autoincrement,
   mongoId,
+
   // Virtual type
   virtual,
 } from '@keystone-next/fields';
@@ -59,7 +62,7 @@ Options:
   See the [Hooks API](./hooks) for full details on the available hook options.
 - `label`: The label displayed for this field in the Admin UI. Defaults to a human readable version of the field name.
 - `ui`: Controls how the field is displayed in the Admin UI.
-  - `views`:
+  - `views`: (coming soon)
   - `description`: (coming soon)
   - `createView`: (coming soon)
   - `listView`: (coming soon)
@@ -103,6 +106,11 @@ export default config({
 
 (coming soon)
 
+Options:
+
+- `defaultValue`
+- `isRequired` (default: `false`):
+
 ```typescript
 import { config, createSchema, list } from '@keystone-next/keystone/schema';
 import { checkbox } from '@keystone-next/fields';
@@ -127,6 +135,13 @@ export default config({
 ### `integer`
 
 (coming soon)
+
+Options:
+
+- `defaultValue`
+- `isRequired` (default: `false`):
+- `isIndexed`
+- `isUnique`
 
 ```typescript
 import { config, createSchema, list } from '@keystone-next/keystone/schema';
@@ -155,6 +170,12 @@ export default config({
 
 (coming soon)
 
+Options:
+
+- `isRequired` (default: `false`):
+- `minLength`
+- `bcrypt`
+
 ```typescript
 import { config, createSchema, list } from '@keystone-next/keystone/schema';
 import { password } from '@keystone-next/fields';
@@ -180,6 +201,16 @@ export default config({
 ### `select`
 
 (coming soon)
+
+Options:
+
+- `dataType`
+- `options`
+- `defaultValue`
+- `isRequired` (default: `false`):
+- `isIndexed`
+- `isUnique`
+- `ui`
 
 ```typescript
 import { config, createSchema, list } from '@keystone-next/keystone/schema';
@@ -214,6 +245,14 @@ export default config({
 
 (coming soon)
 
+Options:
+
+- `defaultValue`
+- `isRequired` (default: `false`):
+- `isIndexed`
+- `isUnique`
+- `ui`
+
 ```typescript
 import { config, createSchema, list } from '@keystone-next/keystone/schema';
 import { text } from '@keystone-next/fields';
@@ -241,6 +280,13 @@ export default config({
 ### `timestamp`
 
 (coming soon)
+
+Options:
+
+- `defaultValue`
+- `isRequired` (default: `false`):
+- `isIndexed`
+- `isUnique`
 
 ```typescript
 import { config, createSchema, list } from '@keystone-next/keystone/schema';
@@ -277,6 +323,13 @@ export default config({
 
 (coming soon)
 
+Options:
+
+- `defaultValue`
+- `isRequired` (default: `false`):
+- `isIndexed`
+- `isUnique`
+
 ```typescript
 import { config, createSchema, list } from '@keystone-next/keystone/schema';
 import { autoincrement } from '@keystone-next/fields';
@@ -303,6 +356,13 @@ export default config({
 ### `mongoId`
 
 (coming soon)
+
+Options:
+
+- `defaultValue`
+- `isRequired` (default: `false`):
+- `isIndexed`
+- `isUnique`
 
 ```typescript
 import { config, createSchema, list } from '@keystone-next/keystone/schema';
@@ -332,6 +392,14 @@ export default config({
 ### `virtual`
 
 (coming soon)
+
+Options:
+
+- `resolver`
+- `graphQLReturnType`
+- `graphQLReturnFragment`
+- `extendGraphQLTypes`
+- `args`
 
 ```typescript
 import { config, createSchema, list } from '@keystone-next/keystone/schema';
@@ -366,6 +434,15 @@ export default config({
 
 (coming soon)
 
+Options:
+
+- `relationships`
+- `componentBlocks`
+- `formatting`
+- `links`
+- `dividers`
+- `layouts`
+
 ```typescript
 import { config, createSchema, list } from '@keystone-next/keystone/schema';
 import { document } from '@keystone-next/fields-document';
@@ -397,6 +474,13 @@ export default config({
 ### `cloudinary`
 
 (coming soon)
+
+- `isRequired` (default: `false`):
+- `cloudinary`
+  - `cloudName`
+  - `apiKey`
+  - `apiSecret`
+  - `folder`
 
 ```typescript
 import { config, createSchema, list } from '@keystone-next/keystone/schema';
