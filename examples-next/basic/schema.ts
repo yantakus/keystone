@@ -141,11 +141,7 @@ export const lists = createSchema({
       content: document({
         ui: { views: require.resolve('./admin/fieldViews/Content.tsx') },
         relationships: {
-          mention: {
-            kind: 'inline',
-            label: 'Mention',
-            listKey: 'User',
-          },
+          mention: { kind: 'inline', label: 'Mention', listKey: 'User' },
           featuredAuthors: {
             kind: 'prop',
             listKey: 'User',
