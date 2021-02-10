@@ -104,7 +104,7 @@ export default config({
 
 ### `checkbox`
 
-A `checkbox` represents a boolean (`true`/`false`) value.
+A `checkbox` field represents a boolean (`true`/`false`) value.
 
 Options:
 
@@ -146,8 +146,8 @@ Options:
   `context` is a [`KeystoneContext`](./context) object.
   `originalItem` is an object containing the data passed in to the `create` mutation.
 - `isRequired` (default: `false`):
-- `isIndexed` (default: `false`):
-- `isUnique` (default: `false`):
+- `isIndexed` (`knex` and `mongoose` adapters only. Default: `false`): If `true` a database level index will be applied to this field, which can make searching faster.
+- `isUnique` (default: `false`): If `true` then all values of this field must be unique.
 
 ```typescript
 import { config, createSchema, list } from '@keystone-next/keystone/schema';
@@ -206,16 +206,16 @@ export default config({
 
 ### `select`
 
-(coming soon)
+A `select` field represents the selection of one of fixed set of values.
 
 Options:
 
-- `dataType`
+- `dataType` (default: `'string'`): Must be on
 - `options`
 - `defaultValue`
 - `isRequired` (default: `false`):
-- `isIndexed` (default: `false`):
-- `isUnique` (default: `false`):
+- `isIndexed` (`knex` and `mongoose` adapters only. Default: `false`): If `true` a database level index will be applied to this field, which can make searching faster.
+- `isUnique` (default: `false`): If `true` then all values of this field must be unique.
 - `ui`
 
 ```typescript
@@ -258,8 +258,8 @@ Options:
   `context` is a [`KeystoneContext`](./context) object.
   `originalItem` is an object containing the data passed in to the `create` mutation.
 - `isRequired` (default: `false`):
-- `isIndexed` (default: `false`):
-- `isUnique` (default: `false`):
+- `isIndexed` (`knex` and `mongoose` adapters only. Default: `false`): If `true` a database level index will be applied to this field, which can make searching faster.
+- `isUnique` (default: `false`): If `true` then all values of this field must be unique.
 - `ui`
 
 ```typescript
@@ -294,8 +294,8 @@ Options:
 
 - `defaultValue`
 - `isRequired` (default: `false`):
-- `isIndexed` (default: `false`):
-- `isUnique` (default: `false`):
+- `isIndexed` (`knex` and `mongoose` adapters only. Default: `false`): If `true` a database level index will be applied to this field, which can make searching faster.
+- `isUnique` (default: `false`): If `true` then all values of this field must be unique.
 
 ```typescript
 import { config, createSchema, list } from '@keystone-next/keystone/schema';
@@ -336,7 +336,7 @@ Options:
 
 - `defaultValue`
 - `isRequired`
-- `isIndexed`
+- `isIndexed` (`knex` and `mongoose` adapters only)
 - `isUnique`
 
 ```typescript
@@ -370,7 +370,7 @@ Options:
 
 - `defaultValue`
 - `isRequired`
-- `isIndexed`
+- `isIndexed` (`knex` and `mongoose` adapters only)
 - `isUnique`
 
 ```typescript
@@ -485,7 +485,7 @@ export default config({
 (coming soon)
 
 - `isRequired` (default: `false`):
-- `cloudinary`
+- `cloudinary`: Configuration for the connected Cloudinary account.
   - `cloudName`
   - `apiKey`
   - `apiSecret`

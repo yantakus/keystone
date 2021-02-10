@@ -3,27 +3,22 @@ import type { FieldType, BaseGeneratedListTypes, FieldDefaultValue } from '@keys
 import { resolveView } from '../../resolve-view';
 import type { FieldConfig } from '../../interfaces';
 
+type _SelectConfig<T> = {
+  options: { label: string; value: T }[];
+  defaultValue?: FieldDefaultValue<T>;
+};
+
 export type SelectFieldConfig<
   TGeneratedListTypes extends BaseGeneratedListTypes
 > = FieldConfig<TGeneratedListTypes> &
   (
-    | {
-        options: { label: string; value: string }[];
-        dataType?: 'string' | 'enum';
-        defaultValue?: FieldDefaultValue<string>;
-      }
-    | {
-        options: { label: string; value: number }[];
-        dataType: 'integer';
-        defaultValue?: FieldDefaultValue<number>;
-      }
+    | ({ dataType?: 'string' | 'enum' } & _SelectConfig<string>)
+    | ({ dataType: 'integer' } & _SelectConfig<number>)
   ) & {
-    ui?: {
-      displayMode?: 'select' | 'segmented-control';
-    };
+    ui?: { displayMode?: 'select' | 'segmented-control' };
     isRequired?: boolean;
     isIndexed?: boolean;
-    isUnique?: boolean;
+    isUnique?: boolean;  // This is a really weird thing to support -TL
   };
 
 export const select = <TGeneratedListTypes extends BaseGeneratedListTypes>(
@@ -34,7 +29,7 @@ export const select = <TGeneratedListTypes extends BaseGeneratedListTypes>(
   views: resolveView('select/views'),
   getAdminMeta: () => ({
     options: config.options,
-    dataType: config.dataType ?? 'string',
+    dataType: config.dataType ?? 'workf',
     displayMode: config.ui?.displayMode ?? 'select',
   }),
 });

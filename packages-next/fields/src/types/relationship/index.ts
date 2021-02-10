@@ -40,12 +40,10 @@ export type RelationshipFieldConfig<
 > = FieldConfig<TGeneratedListTypes> & {
   many?: boolean;
   ref: string;
-  ui?: {
-    hideCreate?: boolean;
-  };
-  defaultValue?: FieldDefaultValue<Record<string, unknown>>;
-  isIndexed?: boolean;
-  isUnique?: boolean;
+  ui?: { hideCreate?: boolean };
+  defaultValue?: FieldDefaultValue<Record<string, unknown>>; // Is this supported?
+  isIndexed?: boolean; // Is this even an option?
+  isUnique?: boolean; // Is this supported?
 } & (SelectDisplayConfig | CardsDisplayConfig);
 
 export const relationship = <TGeneratedListTypes extends BaseGeneratedListTypes>(
