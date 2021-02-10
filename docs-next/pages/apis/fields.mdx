@@ -277,9 +277,55 @@ export default config({
 
 (coming soon)
 
+```typescript
+import { config, createSchema, list } from '@keystone-next/keystone/schema';
+import { autoincrement } from '@keystone-next/fields';
+
+export default config({
+  lists: createSchema({
+    ListName: list({
+      fields: {
+        fieldName: autoincrement({
+          defaultValue: 0,
+          isRequired: true,
+          isIndexed: true,
+          isUnique: true,
+         }),
+        ...
+      },
+    }),
+    ...
+  }),
+  ...
+});
+```
+
 ### `mongoId`
 
 (coming soon)
+
+```typescript
+import { config, createSchema, list } from '@keystone-next/keystone/schema';
+import { mongoId } from '@keystone-next/fields';
+
+export default config({
+  lists: createSchema({
+    ListName: list({
+      fields: {
+        fieldName: mongoId({
+          defaultValue: '...',
+          isRequired: true,
+          isIndexed: true,
+          isUnique: true,
+         }),
+        ...
+      },
+    }),
+    ...
+  }),
+  ...
+});
+```
 
 ## Virtual type
 
@@ -287,14 +333,95 @@ export default config({
 
 (coming soon)
 
+```typescript
+import { config, createSchema, list } from '@keystone-next/keystone/schema';
+import { mongoId } from '@keystone-next/fields';
+
+export default config({
+  lists: createSchema({
+    ListName: list({
+      fields: {
+        fieldName: mongoId({
+          resolver: () => {},
+          graphQLReturnType: '...',
+          graphQLReturnFragment: '...',
+          extendGraphQLTypes: '...',
+          args: [
+            { name: '...', type: '...' },
+            ...
+          ]
+         }),
+        ...
+      },
+    }),
+    ...
+  }),
+  ...
+});
+```
+
 ## Complex types
 
 ### `document`
 
 (coming soon)
 
+```typescript
+import { config, createSchema, list } from '@keystone-next/keystone/schema';
+import { document } from '@keystone-next/fields-document';
+
+export default config({
+  lists: createSchema({
+    ListName: list({
+      fields: {
+        fieldName: document({
+          relationships: { ... };
+          componentBlocks: {
+            block: { ... },
+            ...
+          };
+          formatting: {...};
+          links: true,
+          dividers: true,
+          layouts: [...],
+         }),
+        ...
+      },
+    }),
+    ...
+  }),
+  ...
+});
+```
+
 ### `cloudinary`
 
 (coming soon)
+
+```typescript
+import { config, createSchema, list } from '@keystone-next/keystone/schema';
+import { cloudinary } from '@keystone-next/cloudinary';
+
+export default config({
+  lists: createSchema({
+    ListName: list({
+      fields: {
+        fieldName: cloudinary({
+          isRequired: true,
+          cloudinary: {
+            cloudName: process.env.CLOUDINARY_CLOUD_NAME,
+            apiKey: process.env.CLOUDINARY_API_KEY;
+            apiSecret: process.env.CLOUDINARY_API_SECRET,
+            folder: process.env.CLOUDINARY_API_FOLDER,
+          }
+         }),
+        ...
+      },
+    }),
+    ...
+  }),
+  ...
+});
+```
 
 export default ({ children }) => <Markdown>{children}</Markdown>;
