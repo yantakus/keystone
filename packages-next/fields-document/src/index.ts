@@ -136,7 +136,9 @@ export const document = <TGeneratedListTypes extends BaseGeneratedListTypes>(
     },
     links: !!config.links,
     dividers: !!config.dividers,
-    layouts: [...new Set((config.layouts || []).map(JSON.stringify))].map(JSON.parse),
+    layouts: [...new Set((config.layouts || []).map(x => JSON.stringify(x)))].map(x =>
+      JSON.parse(x)
+    ),
   };
   const componentBlocks = config.componentBlocks || {};
   return {
