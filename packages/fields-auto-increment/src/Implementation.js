@@ -10,15 +10,7 @@ export class AutoIncrementImplementation extends Implementation {
     }
 
     // The base implementation takes care of everything else
-    super(
-      path,
-      {
-        ...config,
-        isUnique,
-        access,
-      },
-      context
-    );
+    super(path, { ...config, isUnique, access }, context);
 
     // If no valid gqlType is supplied, default based on whether or not we're the primary key
     this.gqlType = ['ID', 'Int'].includes(gqlType) ? gqlType : this.isPrimaryKey ? 'ID' : 'Int';

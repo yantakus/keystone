@@ -22,6 +22,8 @@ type Option = {
   insert: (editor: ReactEditor) => void;
 };
 
+const ii = insertNodesButReplaceIfSelectionIsAtEmptyParagraphOrHeading;
+
 function getOptions(
   toolbarState: ToolbarState,
   componentBlocks: Record<string, ComponentBlock>,
@@ -53,41 +55,28 @@ function getOptions(
     ...toolbarState.textStyles.allowedHeadingLevels.map(level => ({
       label: `Heading ${level}`,
       insert(editor: ReactEditor) {
-        insertNodesButReplaceIfSelectionIsAtEmptyParagraphOrHeading(editor, {
-          type: 'heading',
-          level,
-          children: [{ text: '' }],
-        });
+        ii(editor, { type: 'heading', level, children: [{ text: '' }] });
       },
     })),
     !toolbarState.blockquote.isDisabled &&
       toolbarState.editorDocumentFeatures.formatting.blockTypes.blockquote && {
         label: 'Blockquote',
         insert(editor) {
-          insertNodesButReplaceIfSelectionIsAtEmptyParagraphOrHeading(editor, {
-            type: 'blockquote',
-            children: [{ text: '' }],
-          });
+          ii(editor, { type: 'blockquote', children: [{ text: '' }] });
         },
       },
     !toolbarState.code.isDisabled &&
       toolbarState.editorDocumentFeatures.formatting.blockTypes.code && {
         label: 'Code block',
         insert(editor) {
-          insertNodesButReplaceIfSelectionIsAtEmptyParagraphOrHeading(editor, {
-            type: 'code',
-            children: [{ text: '' }],
-          });
+          ii(editor, { type: 'code', children: [{ text: '' }] });
         },
       },
     !toolbarState.dividers.isDisabled &&
       toolbarState.editorDocumentFeatures.dividers && {
         label: 'Divider',
         insert(editor) {
-          insertNodesButReplaceIfSelectionIsAtEmptyParagraphOrHeading(editor, {
-            type: 'divider',
-            children: [{ text: '' }],
-          });
+          ii(editor, { type: 'divider', children: [{ text: '' }] });
         },
       },
     !!toolbarState.editorDocumentFeatures.layouts.length && {
@@ -101,10 +90,7 @@ function getOptions(
         label: 'Numbered List',
         keywords: ['ordered list'],
         insert(editor) {
-          insertNodesButReplaceIfSelectionIsAtEmptyParagraphOrHeading(editor, {
-            type: 'ordered-list',
-            children: [{ text: '' }],
-          });
+          ii(editor, { type: 'ordered-list', children: [{ text: '' }] });
         },
       },
     !toolbarState.lists.unordered.isDisabled &&
@@ -112,10 +98,7 @@ function getOptions(
         label: 'Bullet List',
         keywords: ['unordered list'],
         insert(editor) {
-          insertNodesButReplaceIfSelectionIsAtEmptyParagraphOrHeading(editor, {
-            type: 'unordered-list',
-            children: [{ text: '' }],
-          });
+          ii(editor, { type: 'unordered-list', children: [{ text: '' }] });
         },
       },
   ];

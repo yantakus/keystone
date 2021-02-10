@@ -41,12 +41,7 @@ export function findChildPropPaths(
 ): { path: (string | number)[] | undefined; options: ChildField['options'] }[] {
   let propPaths = _findChildPropPaths(value, { kind: 'object', value: props }, []);
   if (!propPaths.length) {
-    return [
-      {
-        path: undefined,
-        options: { kind: 'inline', placeholder: '' },
-      },
-    ];
+    return [{ path: undefined, options: { kind: 'inline', placeholder: '' } }];
   }
   return propPaths;
 }
@@ -75,10 +70,7 @@ export type DocumentFeaturesForChildField =
   | {
       kind: 'inline';
       inlineMarks: 'inherit' | DocumentFeatures['formatting']['inlineMarks'];
-      documentFeatures: {
-        links: boolean;
-        relationships: boolean;
-      };
+      documentFeatures: { links: boolean; relationships: boolean };
       softBreaks: boolean;
     }
   | {
@@ -130,17 +122,11 @@ export function getDocumentFeaturesForChildField(
         alignment:
           options.formatting?.alignment === 'inherit'
             ? editorDocumentFeatures.formatting.alignment
-            : {
-                center: false,
-                end: false,
-              },
+            : { center: false, end: false },
         blockTypes:
           options.formatting?.blockTypes === 'inherit'
             ? editorDocumentFeatures.formatting.blockTypes
-            : {
-                blockquote: false,
-                code: false,
-              },
+            : { blockquote: false, code: false },
         headingLevels:
           options.formatting?.headingLevels === 'inherit'
             ? editorDocumentFeatures.formatting.headingLevels
@@ -148,10 +134,7 @@ export function getDocumentFeaturesForChildField(
         listTypes:
           options.formatting?.listTypes === 'inherit'
             ? editorDocumentFeatures.formatting.listTypes
-            : {
-                ordered: false,
-                unordered: false,
-              },
+            : { ordered: false, unordered: false },
       },
       links: options.links === 'inherit',
       relationships: options.relationships === 'inherit',

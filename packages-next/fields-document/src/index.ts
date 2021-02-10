@@ -6,14 +6,11 @@ import { ComponentBlock } from './component-blocks';
 import { DocumentFeatures } from './views';
 import { validateAndNormalizeDocument } from './validation';
 
-type RelationshipsConfig = Record<
-  string,
-  {
-    listKey: string;
-    /** GraphQL fields to select when querying the field */
-    selection?: string;
-  } & ({ kind: 'inline'; label: string } | { kind: 'prop'; many?: true })
->;
+type Relationship = {
+  listKey: string;
+  /** GraphQL fields to select when querying the field */
+  selection?: string;
+} & ({ kind: 'inline'; label: string } | { kind: 'prop'; many?: true });
 
 type FormattingConfig = {
   inlineMarks?:
@@ -38,7 +35,7 @@ type FormattingConfig = {
 export type DocumentFieldConfig<
   TGeneratedListTypes extends BaseGeneratedListTypes
 > = FieldConfig<TGeneratedListTypes> & {
-  relationships?: RelationshipsConfig;
+  relationships?: Record<string, Relationship>;
   componentBlocks?: Record<string, ComponentBlock>;
   formatting?: true | FormattingConfig;
   links?: true;
@@ -65,7 +62,7 @@ export const document = <TGeneratedListTypes extends BaseGeneratedListTypes>(
           : {
               ...relationship,
               selection: relationship.selection ?? null,
-              many: relationship.many || false,
+              many: !!relationship.many,
             };
     });
   }
@@ -84,8 +81,14 @@ export const document = <TGeneratedListTypes extends BaseGeneratedListTypes>(
     formatting: {
       alignment:
         formatting.alignment === true
-          ? { center: true, end: true }
-          : { center: !!formatting.alignment?.center, end: !!formatting.alignment?.end },
+          ? {
+              center: true,
+              end: true,
+            }
+          : {
+              center: !!formatting.alignment?.center,
+              end: !!formatting.alignment?.end,
+            },
       blockTypes:
         formatting?.blockTypes === true
           ? { blockquote: true, code: true }
@@ -129,9 +132,7 @@ export const document = <TGeneratedListTypes extends BaseGeneratedListTypes>(
       softBreaks: !!formatting.softBreaks,
     },
     links: !!config.links,
-    layouts: [...new Set((config.layouts || []).map(x => JSON.stringify(x)))].map(x =>
-      JSON.parse(x)
-    ),
+    layouts: [...new Set((config.layouts || []).map(JSON.stringify))].map(JSON.parse),
     dividers: !!config.dividers,
   };
   const componentBlocks = config.componentBlocks || {};

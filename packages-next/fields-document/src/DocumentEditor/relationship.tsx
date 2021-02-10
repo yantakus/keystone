@@ -12,23 +12,12 @@ import { ToolbarButton } from './primitives';
 import { useStaticEditor } from './utils';
 import { useToolbarState } from './toolbar-state';
 
-export type Relationships = Record<
-  string,
-  {
-    listKey: string;
-    /** GraphQL fields to select when querying the field */
-    selection: string | null;
-  } & (
-    | {
-        kind: 'inline';
-        label: string;
-      }
-    | {
-        kind: 'prop';
-        many: boolean;
-      }
-  )
->;
+type Relationship = {
+  listKey: string;
+  /** GraphQL fields to select when querying the field */
+  selection: string | null;
+} & ({ kind: 'inline'; label: string } | { kind: 'prop'; many: boolean });
+export type Relationships = Record<string, Relationship>;
 
 const DocumentFieldRelationshipsContext = createContext<null | Relationships>(null);
 
@@ -46,12 +35,8 @@ export const DocumentFieldRelationshipsProvider = DocumentFieldRelationshipsCont
 
 export function withRelationship<T extends Editor>(editor: T): T {
   const { isVoid, isInline } = editor;
-  editor.isVoid = element => {
-    return element.type === 'relationship' || isVoid(element);
-  };
-  editor.isInline = element => {
-    return element.type === 'relationship' || isInline(element);
-  };
+  editor.isVoid = element => element.type === 'relationship' || isVoid(element);
+  editor.isInline = element => element.type === 'relationship' || isInline(element);
   return editor;
 }
 

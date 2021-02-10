@@ -20,21 +20,8 @@ export const TextAlignMenu = ({
 }) => {
   const [showMenu, setShowMenu] = useState(false);
   const { dialog, trigger } = useControlledPopover(
-    {
-      isOpen: showMenu,
-      onClose: () => setShowMenu(false),
-    },
-    {
-      placement: 'bottom-start',
-      modifiers: [
-        {
-          name: 'offset',
-          options: {
-            offset: [0, 8],
-          },
-        },
-      ],
-    }
+    { isOpen: showMenu, onClose: () => setShowMenu(false) },
+    { placement: 'bottom-start', modifiers: [{ name: 'offset', options: { offset: [0, 8] } }] }
   );
 
   return (
@@ -77,8 +64,7 @@ function TextAlignDialog({
   alignment: DocumentFeatures['formatting']['alignment'];
   onClose: () => void;
 }) {
-  const {
-    alignment: { selected },
+  const {    alignment: { selected },
     editor,
   } = useToolbarState();
   const alignments = [

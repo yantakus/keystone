@@ -10,7 +10,7 @@ export type AutoIncrementFieldConfig<
   isRequired?: boolean;
   isIndexed?: boolean;
   isUnique?: boolean;
-  defaultValue?: FieldDefaultValue<number>;
+  defaultValue?: FieldDefaultValue<number>; // Really???
 };
 
 export const autoIncrement = <TGeneratedListTypes extends BaseGeneratedListTypes>(

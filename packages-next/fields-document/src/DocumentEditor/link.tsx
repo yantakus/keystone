@@ -38,8 +38,7 @@ export const wrapLink = (editor: Editor, url: string) => {
 
   const { selection } = editor;
   const isCollapsed = selection && Range.isCollapsed(selection);
-  const link = {
-    type: 'link',
+  const link = {    type: 'link',
     href: url,
     children: isCollapsed ? [{ text: url }] : [{ text: '' }],
   };
@@ -75,9 +74,7 @@ export const LinkElement = ({
       modifiers: [
         {
           name: 'offset',
-          options: {
-            offset: [0, 8],
-          },
+          options: { offset: [0, 8] },
         },
       ],
     }
@@ -254,20 +251,14 @@ export function withLink<T extends HistoryEditor>(
       const startOfLinkText = EditorAfterButIgnoringingPointsWithNoContent(
         editor,
         startOfShortcut,
-        {
-          distance: maybeWhitespace === '' ? 1 : 2,
-        }
+        { distance: maybeWhitespace === '' ? 1 : 2 }
       )!;
       const endOfLinkText = EditorAfterButIgnoringingPointsWithNoContent(editor, startOfLinkText, {
         distance: linkText.length,
       })!;
 
-      Transforms.delete(editor, {
-        at: { anchor: endOfLinkText, focus: editor.selection.anchor },
-      });
-      Transforms.delete(editor, {
-        at: { anchor: startOfShortcut, focus: startOfLinkText },
-      });
+      Transforms.delete(editor, { at: { anchor: endOfLinkText, focus: editor.selection.anchor } });
+      Transforms.delete(editor, { at: { anchor: startOfShortcut, focus: startOfLinkText } });
 
       Transforms.wrapNodes(
         editor,

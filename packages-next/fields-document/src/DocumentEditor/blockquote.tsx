@@ -15,14 +15,9 @@ import { useToolbarState } from './toolbar-state';
 export const insertBlockquote = (editor: ReactEditor) => {
   const isActive = isElementActive(editor, 'blockquote');
   if (isActive) {
-    Transforms.unwrapNodes(editor, {
-      match: node => node.type === 'blockquote',
-    });
+    Transforms.unwrapNodes(editor, { match: node => node.type === 'blockquote' });
   } else {
-    Transforms.wrapNodes(editor, {
-      type: 'blockquote',
-      children: [],
-    });
+    Transforms.wrapNodes(editor, { type: 'blockquote', children: [] });
   }
 };
 
@@ -49,10 +44,7 @@ export function withBlockquote<T extends Editor>(editor: T): T {
         // it's the first paragraph in the panel
         editor.selection.anchor.path[editor.selection.anchor.path.length - 2] === 0
       ) {
-        Transforms.unwrapNodes(editor, {
-          match: node => node.type === 'blockquote',
-          split: true,
-        });
+        Transforms.unwrapNodes(editor, { match: node => node.type === 'blockquote', split: true });
         return;
       }
     }
@@ -63,10 +55,7 @@ export function withBlockquote<T extends Editor>(editor: T): T {
     if (editor.selection && panel.isInside) {
       const [node, nodePath] = Editor.node(editor, editor.selection);
       if (Path.isDescendant(nodePath, panel.path) && Node.string(node) === '') {
-        Transforms.unwrapNodes(editor, {
-          match: node => node.type === 'blockquote',
-          split: true,
-        });
+        Transforms.unwrapNodes(editor, { match: node => node.type === 'blockquote', split: true });
         return;
       }
     }

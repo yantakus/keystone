@@ -19,14 +19,10 @@ export function withHeading<T extends Editor>(editor: T): T {
   editor.insertBreak = () => {
     insertBreak();
 
-    const entry = Editor.above(editor, {
-      match: n => n.type === 'heading',
-    });
+    const entry = Editor.above(editor, { match: n => n.type === 'heading' });
     if (!entry) return;
     const [, path] = entry;
-    Transforms.unwrapNodes(editor, {
-      at: path,
-    });
+    Transforms.unwrapNodes(editor, { at: path });
   };
   return editor;
 }

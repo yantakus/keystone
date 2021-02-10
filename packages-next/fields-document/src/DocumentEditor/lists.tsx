@@ -36,18 +36,10 @@ function getAncestorList(
   | { isInside: false }
   | { isInside: true; list: NodeEntry<Element>; listItem: NodeEntry<Element> } {
   if (editor.selection) {
-    const listItem = Editor.above(editor, {
-      match: node => node.type === 'list-item',
-    });
-    const list = Editor.above(editor, {
-      match: node => isListType(node.type as string),
-    });
+    const listItem = Editor.above(editor, { match: node => node.type === 'list-item' });
+    const list = Editor.above(editor, { match: node => isListType(node.type as string) });
     if (listItem && list) {
-      return {
-        isInside: true,
-        listItem,
-        list,
-      };
+      return { isInside: true, listItem, list };
     }
   }
   return { isInside: false };
@@ -184,9 +176,7 @@ export const ListButton = forwardRef<
 });
 
 export function nestList(editor: Editor) {
-  const block = Editor.above(editor, {
-    match: n => Editor.isBlock(editor, n),
-  });
+  const block = Editor.above(editor, { match: n => Editor.isBlock(editor, n) });
 
   if (!block || block[0].type !== 'list-item-content') {
     return false;
@@ -220,15 +210,10 @@ export function nestList(editor: Editor) {
 }
 
 export function unnestList(editor: Editor) {
-  const block = Editor.above(editor, {
-    match: n => Editor.isBlock(editor, n),
-  });
+  const block = Editor.above(editor, { match: n => Editor.isBlock(editor, n) });
 
   if (block && block[0].type === 'list-item-content') {
-    Transforms.unwrapNodes(editor, {
-      match: node => isListType(node.type as string),
-      split: true,
-    });
+    Transforms.unwrapNodes(editor, { match: node => isListType(node.type as string), split: true });
     return true;
   }
   return false;

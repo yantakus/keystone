@@ -60,8 +60,6 @@ export const dividerButton = (
 
 export function withDivider<T extends Editor>(editor: T): T {
   const { isVoid } = editor;
-  editor.isVoid = node => {
-    return node.type === 'divider' || isVoid(node);
-  };
+  editor.isVoid = node => node.type === 'divider' || isVoid(node);
   return editor;
 }

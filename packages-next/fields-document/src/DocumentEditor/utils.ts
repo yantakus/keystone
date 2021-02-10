@@ -41,9 +41,7 @@ export const isElementActive = (
   editor: Editor,
   format: Exclude<ElementFromValidation, { text: string }>['type']
 ) => {
-  const [match] = Editor.nodes(editor, {
-    match: n => n.type === format,
-  });
+  const [match] = Editor.nodes(editor, { match: n => n.type === format });
 
   return !!match;
 };
@@ -153,9 +151,7 @@ export function EditorAfterButIgnoringingPointsWithNoContent(
   let d = 0;
   let target;
 
-  for (const p of Editor.positions(editor, {
-    at: range,
-  })) {
+  for (const p of Editor.positions(editor, { at: range })) {
     if (d > distance) {
       break;
     }

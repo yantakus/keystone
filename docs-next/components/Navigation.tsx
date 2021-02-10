@@ -60,7 +60,7 @@ export const Navigation = () => {
         <NavItem href="/guides/access-control">Access Control</NavItem>
         <NavItem href="/guides/hooks">Hooks</NavItem>
         <NavItem href="/guides/schema-extension">Schema Extension</NavItem>
-        <NavItem href="/guides/content">Content Fields</NavItem>
+        <NavItem href="/guides/document">Document Fields</NavItem>
         <NavItem href="/guides/virtual">Virtual Fields</NavItem>
       </Section>
       <Section label="API">
