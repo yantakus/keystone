@@ -37,6 +37,7 @@ export type DocumentFieldConfig<
 > = FieldConfig<TGeneratedListTypes> & {
   relationships?: Record<string, Relationship>;
   componentBlocks?: Record<string, ComponentBlock>;
+  // Document Features
   formatting?: true | FormattingConfig;
   links?: true;
   dividers?: true;
@@ -66,6 +67,7 @@ export const document = <TGeneratedListTypes extends BaseGeneratedListTypes>(
             };
     });
   }
+
   const formatting: FormattingConfig =
     config.formatting === true
       ? {
@@ -77,6 +79,7 @@ export const document = <TGeneratedListTypes extends BaseGeneratedListTypes>(
           softBreaks: true,
         }
       : config.formatting ?? {};
+
   const documentFeatures: DocumentFeatures = {
     formatting: {
       alignment:
@@ -132,8 +135,8 @@ export const document = <TGeneratedListTypes extends BaseGeneratedListTypes>(
       softBreaks: !!formatting.softBreaks,
     },
     links: !!config.links,
-    layouts: [...new Set((config.layouts || []).map(JSON.stringify))].map(JSON.parse),
     dividers: !!config.dividers,
+    layouts: [...new Set((config.layouts || []).map(JSON.stringify))].map(JSON.parse),
   };
   const componentBlocks = config.componentBlocks || {};
   return {

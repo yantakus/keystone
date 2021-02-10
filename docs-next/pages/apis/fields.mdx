@@ -104,12 +104,15 @@ export default config({
 
 ### `checkbox`
 
-(coming soon)
+A `checkbox` represents a boolean (`true`/`false`) value.
 
 Options:
 
-- `defaultValue`
-- `isRequired` (default: `false`):
+- `defaultValue` (default: `undefined`): Can be either a boolean value or an async function which takes an argument `({ context, originalItem })` and returns a boolean value.
+  This value will be used for the field when creating items if no explicit value is set.
+  `context` is a [`KeystoneContext`](./context) object.
+  `originalItem` is an object containing the data passed in to the `create` mutation.
+- `isRequired` (default: `false`): If `true` then this field can never be set to `null`.
 
 ```typescript
 import { config, createSchema, list } from '@keystone-next/keystone/schema';
@@ -138,7 +141,10 @@ export default config({
 
 Options:
 
-- `defaultValue`
+- `defaultValue` (default: `undefined`): Can be either an integer value or an async function which takes an argument `({ context, originalItem })` and returns an integer value.
+  This value will be used for the field when creating items if no explicit value is set.
+  `context` is a [`KeystoneContext`](./context) object.
+  `originalItem` is an object containing the data passed in to the `create` mutation.
 - `isRequired` (default: `false`):
 - `isIndexed` (default: `false`):
 - `isUnique` (default: `false`):
@@ -247,7 +253,10 @@ export default config({
 
 Options:
 
-- `defaultValue`
+- `defaultValue` (default: `undefined`): Can be either a string value or an async function which takes an argument `({ context, originalItem })` and returns a string value.
+  This value will be used for the field when creating items if no explicit value is set.
+  `context` is a [`KeystoneContext`](./context) object.
+  `originalItem` is an object containing the data passed in to the `create` mutation.
 - `isRequired` (default: `false`):
 - `isIndexed` (default: `false`):
 - `isUnique` (default: `false`):
@@ -457,7 +466,7 @@ export default config({
             block: { ... },
             ...
           };
-          formatting: {...};
+          formatting: { ... };
           links: true,
           dividers: true,
           layouts: [...],
